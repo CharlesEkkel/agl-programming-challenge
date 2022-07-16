@@ -1,0 +1,35 @@
+[18:30:08.028] Global cache location '/home/chuckles/.cache/typescript/4.7', safe file path '/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/node_modules/typescript/lib/typingSafeList.json', types map path /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/node_modules/typescript/lib/typesMap.json
+[18:30:08.029] Processing cache location '/home/chuckles/.cache/typescript/4.7'
+[18:30:08.029] Trying to find '/home/chuckles/.cache/typescript/4.7/package.json'...
+[18:30:08.038] Loaded content of '/home/chuckles/.cache/typescript/4.7/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.600"}}
+[18:30:08.038] Loaded content of '/home/chuckles/.cache/typescript/4.7/package-lock.json'
+[18:30:08.038] Finished processing cache location '/home/chuckles/.cache/typescript/4.7'
+[18:30:08.038] Process id: 124781
+[18:30:08.038] NPM location: /usr/bin/npm (explicit '--npmLocation' not  provided)
+[18:30:08.038] validateDefaultNpmLocation: false
+[18:30:08.039] Npm config file: /home/chuckles/.cache/typescript/4.7/package.json
+[18:30:08.039] Updating types-registry npm package...
+[18:30:08.039] Exec: /usr/bin/npm install --ignore-scripts types-registry@latest
+[18:30:09.151]     Succeeded. stdout:
+    
+    up to date, audited 2 packages in 699ms
+
+found 0 vulnerabilities
+
+[18:30:09.151] Updated types-registry npm package
+[18:40:59.256] Got install request {"projectName":"/dev/null/inferredProject1*","fileNames":[],"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true},"typeAcquisition":{"enable":true,"include":[],"exclude":[]},"unresolvedImports":[],"projectRootPath":"/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components","kind":"discover"}
+[18:40:59.329] Loaded safelist from types map file '/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/node_modules/typescript/lib/typesMap.json'
+[18:40:59.330] Explicitly included types: []
+[18:40:59.332] Inferred typings from unresolved imports: []
+[18:40:59.332] Result: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/bower_components","/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/node_modules"]}
+[18:40:59.333] Finished typings discovery: {"cachedTypingPaths":[],"newTypingNames":[],"filesToWatch":["/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/bower_components","/home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/node_modules"]}
+[18:40:59.334] DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/bower_components
+[18:40:59.335] DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[18:40:59.341] Elapsed:: 5.668737001717091ms DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/bower_components 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[18:40:59.341] DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/node_modules
+[18:40:59.342] DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[18:40:59.342] Elapsed:: 0.416483998298645ms DirectoryWatcher:: Added:: WatchInfo: /home/chuckles/Documents/Projects/agl-programming-challenge/agl-programming-challenge-reactjs/src/components/node_modules 1 undefined Project: /dev/null/inferredProject1* watcher already invoked: false
+[18:40:59.343] Sending response:
+    {"projectName":"/dev/null/inferredProject1*","typeAcquisition":{"enable":true,"include":[],"exclude":[]},"compilerOptions":{"module":1,"target":3,"jsx":1,"allowJs":true,"allowSyntheticDefaultImports":true,"allowNonTsExtensions":true,"noEmitForJsFiles":true},"typings":[],"unresolvedImports":[],"kind":"action::set"}
+[18:40:59.344] Response has been sent.
+[18:40:59.344] No new typings were requested as a result of typings discovery
