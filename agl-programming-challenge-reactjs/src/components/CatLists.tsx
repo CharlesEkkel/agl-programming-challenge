@@ -107,32 +107,50 @@ const CatLists = (props: CatListsProps) => {
     [props.apiUrl]
   );
 
-  if (!errorMessage) {
-    return (
-      <>
-        <h4>Cats with male owners</h4>
-        <ol>
-          {listM.map((pet) => (
-            <li>{pet.name}</li>
-          ))}
-        </ol>
-        <h4>Cats with female owners</h4>
-        <ol>
-          {listF.map((pet) => (
-            <li>{pet.name}</li>
-          ))}
-        </ol>
-      </>
-    );
-  } else {
-    // Error was encountered!
-    return (
-      <>
-        <h2>Error occurred while retrieving API data:</h2>
-        <p>{errorMessage}</p>
-      </>
-    );
-  }
+  const errorDisplay = (
+    <>
+      <h2 className="text-3xl">Error occurred while retrieving API data:</h2>
+      <p className="text-2xl">{errorMessage}</p>
+    </>
+  );
+
+  return (
+    <div id="catLists" className="flex items-start justify-evenly w-full">
+      {errorMessage ? (
+        errorDisplay
+      ) : (
+        // No error, so just display the data.
+        <>
+          <List
+            heading="Cats with male owners"
+            items={listM.map((pet) => pet.name)}
+          />
+          <List
+            heading="Cats with female owners"
+            items={listF.map((pet) => pet.name)}
+          />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default CatLists;
+
+interface ListProps {
+  heading: string;
+  items: string[];
+}
+
+const List = (props: ListProps) => {
+  return (
+    <div className="flex flex-col items-center">
+      <h2 className="text-3xl font-semibold p-10">{props.heading}</h2>
+      <ol className="text-xl list-disc text-justify">
+        {props.items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ol>
+    </div>
+  );
+};
