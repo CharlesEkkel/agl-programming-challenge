@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>A sorted list of male & female cats</h1>
-        <CatLists />
+        <CatLists apiUrl="https://agl-developer-test.azurewebsites.net/people.json" />
       </header>
     </div>
   );
