@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import _ from "lodash";
+import axios from "axios";
 
 /* SCHEMAS FOR JSON VALIDATION */
 
@@ -75,68 +76,63 @@ const CatLists = (props: CatListsProps) => {
   const [listF, setListF] = useState<PetT[]>([]);
   const [listM, setListM] = useState<PetT[]>([]);
 
-  const [errorMessage, setErrorMessage] = useState<string>(
+  const [errorMessage, setErrorMessage] = useState<string | null>(
     "Waiting for response..."
   );
 
   useEffect(
     () => {
-      // Async fetching so that the user still sees the rest of the page
-      // when initially loading.
-      const fetchAll = async () => {
-        const jsonData = await fetch(props.apiUrl);
-        const result = await jsonData.json();
-        const parseResult = z.array(Person).safeParse(result);
-
-        if (parseResult.success) {
-          const [petsF, petsM] = processPeople(parseResult.data);
-          setListF(petsF);
-          setListM(petsM);
-          setErrorMessage("");
-        } else {
-          // Handle errors
-          setErrorMessage(parseResult.error.message);
-        }
-      };
-
-      fetchAll();
+      // Fetch asynchronously so that the user still sees the rest of the page
+      // when initially loading. And using axios because the default fetch api doesn't
+      // handle code 400+ errors automatically.
+      axios
+        .get(props.apiUrl)
+        // This is where our schema comes in handy, for safe parsing.
+        .then((result) => z.array(Person).safeParse(result.data))
+        .then((parsedResult) => {
+          if (parsedResult.success) {
+            // Also process the data here because we want to do so as little as possible.
+            const [petsF, petsM] = processPeople(parsedResult.data);
+            setListF(petsF);
+            setListM(petsM);
+            setErrorMessage(null);
+          } else {
+            setErrorMessage(`Parsing Error: ${parsedResult.error.message}`);
+          }
+        })
+        .catch((error) => setErrorMessage(error.toString()));
     },
     // Since the given API appears to contain frozen data, we only need to
     // re-fetch data if the API url were to change.
     [props.apiUrl]
   );
 
-  if (errorMessage === "") {
+  if (!errorMessage) {
     return (
       <>
         <h4>Cats with male owners</h4>
         <ol>
           {listM.map((pet) => (
-            <PetInfo pet={pet} />
+            <li>{pet.name}</li>
           ))}
         </ol>
         <h4>Cats with female owners</h4>
         <ol>
           {listF.map((pet) => (
-            <PetInfo pet={pet} />
+            <li>{pet.name}</li>
           ))}
         </ol>
       </>
     );
   } else {
-    return <h2>{errorMessage}</h2>;
+    // Error was encountered!
+    return (
+      <>
+        <h2>Error occurred while retrieving API data:</h2>
+        <p>{errorMessage}</p>
+      </>
+    );
   }
 };
-
-interface PetInfoProps {
-  /** Pet data to display. Only name used currently. */
-  pet: PetT;
-}
-
-/**
- * List component for showing information about a pet; currently very simple,
- * but is abstracted out for possible future extension/decoration.
- */
-const PetInfo = (props: PetInfoProps) => <li>{props.pet.name}</li>;
 
 export default CatLists;
