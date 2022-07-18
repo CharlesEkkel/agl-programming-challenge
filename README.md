@@ -20,6 +20,7 @@ Things worth noting (in terms of 'best practices'):
 - All basic functionality has automatic tests.
 - Occasional use of lodash and other declarative-style programming when manipulating arrays.
 - Consistent styling using tailwindCSS.
+- Use of rudimentary CI/CD with github actions & pages.
 
 It is worth noting that "best practices" in some situations may also include the following, but I've neglected to do so due to the small scope of this project:
 
