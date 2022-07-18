@@ -1,5 +1,9 @@
 # AGL Programming Challenge
 
+## Result
+
+See the [app on github pages](https://charlesekkel.github.io/agl-programming-challenge/).
+
 ## Approach
 
 In my approach to the AGL's pet data display task, I have used ReactJS to create a simple Single Page App which displays the required data after requesting it from the given API server. I've used create-react-app to do so, which is suitable enough for this purpose given it's ease to get running and the simplicity of the task. Anything more complex would ideally have a server and a proper web framework.
