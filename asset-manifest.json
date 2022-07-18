@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/agl-programming-challenge/static/css/main.7b186e88.css",
+    "main.js": "/agl-programming-challenge/static/js/main.185d65f4.js",
+    "static/js/787.3576e373.chunk.js": "/agl-programming-challenge/static/js/787.3576e373.chunk.js",
+    "index.html": "/agl-programming-challenge/index.html",
+    "main.7b186e88.css.map": "/agl-programming-challenge/static/css/main.7b186e88.css.map",
+    "main.185d65f4.js.map": "/agl-programming-challenge/static/js/main.185d65f4.js.map",
+    "787.3576e373.chunk.js.map": "/agl-programming-challenge/static/js/787.3576e373.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b186e88.css",
+    "static/js/main.185d65f4.js"
+  ]
+}
