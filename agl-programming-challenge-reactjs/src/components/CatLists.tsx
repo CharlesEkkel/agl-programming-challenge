@@ -34,7 +34,7 @@ type PersonT = z.infer<typeof Person>;
  * @param people: Array of PersonT values, each containing an array of pets.
  * @returns Sorted list of cats
  */
-const getSortedCats = (people: PersonT[]): PetT[] =>
+export const getSortedCats = (people: PersonT[]): PetT[] =>
   people
     .flatMap((person) => (person.pets ? person.pets : []))
     .filter((pet) => pet.type === "Cat")
@@ -48,7 +48,7 @@ const getSortedCats = (people: PersonT[]): PetT[] =>
  * @returns Tuple of two arrays containing cats which have female and male
  * owners respectively.
  */
-const processPeople = (data: PersonT[]): [PetT[], PetT[]] => {
+export const processPeople = (data: PersonT[]): [PetT[], PetT[]] => {
   const [women, men] = _.partition(
     data,
     // If more genders are added in future, this approach will no longer be
@@ -115,17 +115,22 @@ const CatLists = (props: CatListsProps) => {
   );
 
   return (
-    <div id="catLists" className="flex items-start justify-evenly w-full">
+    <div
+      data-testid="catLists"
+      className="flex items-start justify-evenly w-full"
+    >
       {errorMessage ? (
         errorDisplay
       ) : (
         // No error, so just display the data.
         <>
           <List
+            id="maleOwned"
             heading="Cats with male owners"
             items={listM.map((pet) => pet.name)}
           />
           <List
+            id="femaleOwned"
             heading="Cats with female owners"
             items={listF.map((pet) => pet.name)}
           />
@@ -135,18 +140,27 @@ const CatLists = (props: CatListsProps) => {
   );
 };
 
-export default CatLists;
-
 interface ListProps {
+  /** Element id, re-used to derive heading and list ids. */
+  id: string;
   heading: string;
+  /** Order will be maintained so long as item strings are unique. */
   items: string[];
 }
 
+/**
+ * Display a list of ordered values.
+ */
 const List = (props: ListProps) => {
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="text-3xl font-semibold p-10">{props.heading}</h2>
-      <ol className="text-xl list-disc text-justify">
+    <div id={props.id} className="flex flex-col items-center">
+      <h4 id={`${props.id}-heading`} className="text-3xl font-semibold p-10">
+        {props.heading}
+      </h4>
+      <ol
+        aria-labelledby={`${props.id}-heading`}
+        className="text-xl list-disc text-justify"
+      >
         {props.items.map((item) => (
           <li key={item}>{item}</li>
         ))}
@@ -154,3 +168,5 @@ const List = (props: ListProps) => {
     </div>
   );
 };
+
+export default CatLists;
