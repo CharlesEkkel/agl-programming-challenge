@@ -52,12 +52,16 @@ const data = [
 
 test("'getSortedCats()' filters out non-cats and sorts by name", () => {
   const allPets = [...pets1, ...pets2];
-  const allCats = allPets.filter((pet) => pet.type == "Cat");
+  const allCats = allPets.filter((pet) => pet.type === "Cat");
   const sortedCats = sortBy(allCats, ["name"]);
+  // Technically `data` doesn't quite typecheck, but it'd be more pain
+  // than it's worth to fix, since it's functionally fine.
+  // @ts-ignore
   expect(getSortedCats(data)).toEqual(sortedCats);
 });
 
 test("'processPeople()' partitions cats by owner's gender", () => {
+  // @ts-ignore
   const [fCats, mCats] = processPeople(data);
   expect(union(pets1, mCats)).toEqual(pets1);
   expect(union(pets2, fCats)).toEqual(pets2);
