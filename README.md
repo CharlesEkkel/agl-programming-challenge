@@ -26,9 +26,7 @@ It is worth noting that "best practices" in some situations may also include the
 
 ## Usage
 
-[To be added]
-
-In the project directory, you can run:
+See this [Github pages deployment](https://charlesekkel.github.io/agl-programming-challenge/) for the end result, or do any of the following from within the project directory:
 
 ### `yarn start`
 
